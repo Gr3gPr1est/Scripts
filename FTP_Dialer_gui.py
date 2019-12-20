@@ -27,7 +27,7 @@ def FTP_dialer():
         if int(started_ip_dig_3) != 255 + 1:
             ip = str(started_ip_dig_0)+'.'+str(started_ip_dig_1)+'.'+str(started_ip_dig_2)+'.'+str(started_ip_dig_3)
             port = 21
-            print ip
+  #          print ip
             try:
                 s = socket.create_connection((ip, port), timeout=2)
                 file = open("FTP_Server_list.txt","a")
