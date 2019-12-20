@@ -3,9 +3,9 @@ import sys
 import os
 from Tkinter import *
 
-file = open("FTP_Server_list.txt","a")
-file.write("IP:"+"\t"+"Server:"+"\n")
-file.close()
+#file = open("FTP_Server_list.txt","a")
+#file.write("IP:"+"\t"+"Server:"+"\n")
+#file.close()
 
 def FTP_dialer():
     counter = 0
