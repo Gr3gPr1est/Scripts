@@ -15,5 +15,5 @@ with open(iplist) as f:
 	for line in f:
 		for word in line.split():
 			print word
-			os.system("python3 /root/tools/dirsearch/dirsearch.py -u "+word+" -e php,asp,jsp -b >> index.txt")
-#			os.system("nmap -sV -PN "+word+" >> att_nmap.txt")
+			os.system("python3 /root/tools/dirsearch/dirsearch.py -u "+word+" -e php,asp,jsp -b >> dirsearch.txt")
+#			os.system("nmap -sV -PN "+word+" >> _nmap.txt")
